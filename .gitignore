@@ -1,4 +1,5 @@
 # Operating System Files
+*.class
 
 *.DS_Store
 Thumbs.db
@@ -7,6 +8,16 @@ Thumbs.db
 *#
 *~
 *.sublime-*
+
+#package file
+*.war
+*.ear
+
+#kdiff3 ignore
+*.orig
+
+#maven ignore
+target/
 
 # Build Artifacts
 
@@ -28,6 +39,16 @@ dependency-reduced-pom.xml
 *.ipr
 *.iws
 *.idea
+/idea/
+
+#temp file
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+*.temp
+
 
 README.html
 #directory

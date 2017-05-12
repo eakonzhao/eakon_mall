@@ -1,4 +1,4 @@
-package com.eakonMall.controller.protal.backend;
+package com.eakonMall.controller.backend;
 
 import com.eakonMall.common.Const;
 import com.eakonMall.common.ServerResponse;

@@ -210,4 +210,23 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectList" resultMap="BaseResultMap">
+  SELECT
+  <include refid="Base_Column_List" />
+    ORDER BY id asc
+  </select>
+  <select id="selectByNameAndProductId" resultType="com.eakonMall.pojo.Product" parameterType="map">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM mmal_product
+   <where>
+     <if test="productName != null">
+       AND name like #{productName}
+     </if>
+     <if test="productId != null">
+       AND id = #{productId}
+     </if>
+   </where>
+  </select>
 </mapper>

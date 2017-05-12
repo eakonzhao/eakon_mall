@@ -1,4 +1,4 @@
-package com.eakonMall.controller.protal.backend;
+package com.eakonMall.controller.backend;
 
 import com.eakonMall.common.Const;
 import com.eakonMall.common.ResponseCode;
@@ -72,23 +72,6 @@ public class CategoryController {
             //是管理员,查询子节点的category信息并且无递归，保持平级
             return categoryService.getChildrenCategoryParallelCategory(categotyId);
 
-        }else{
-            return ServerResponse.createByErrorMessage("无管理员权限,不能进行操作");
-        }
-    }
-
-    @ResponseBody
-    @RequestMapping("get_category_deep.do")
-    public ServerResponse getCategoryAndDeepChildrenCategory(HttpSession session, @RequestParam(value = "categoryId",defaultValue = "0") Integer categotyId){
-        User user = (User)session.getAttribute(Const.CURRENT_USER);
-        if(user == null){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.ERROR.getCode(),"用户未登录，请登录");
-        }
-        //校验一下是否是管理员
-        if(userService.checkAdminRole(user).isSuccess()){
-            //是管理员,查询子节点的category信息并且无递归，保持平级
-            // 0->10000->100000
-            return categoryService.selectCategoryAndDeepChildrenById(categotyId);
         }else{
             return ServerResponse.createByErrorMessage("无管理员权限,不能进行操作");
         }

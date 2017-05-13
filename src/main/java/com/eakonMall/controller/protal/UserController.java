@@ -32,7 +32,9 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping(value = "login.do",method = RequestMethod.POST)
-    public ServerResponse<User> login(String username, String password, HttpSession session){
+    public ServerResponse<User> login(String username,
+                                      String password,
+                                      HttpSession session){
         ServerResponse<User> response = userService.login(username,password);
         if(response.isSuccess()){
             session.setAttribute(Const.CURRENT_USER,response.getData());
@@ -124,7 +126,9 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping(value = "forget_reset_password.do",method = RequestMethod.POST)
-    public ServerResponse<String> forgetResetPassword(String username, String newPassword, String passwordToken){
+    public ServerResponse<String> forgetResetPassword(String username,
+                                                      String newPassword,
+                                                      String passwordToken){
         return userService.forgetResetPassword(username,newPassword,passwordToken);
     }
 
@@ -137,7 +141,9 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping(value = "reset_password.do", method = RequestMethod.POST)
-    public ServerResponse<String> resetPassword(HttpSession session, String oldPassword, String newPassword){
+    public ServerResponse<String> resetPassword(HttpSession session,
+                                                String oldPassword,
+                                                String newPassword){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user==null){
             return ServerResponse.createByErrorMessage("用户未登录");
@@ -153,7 +159,8 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping(value = "update_user_information.do", method = RequestMethod.POST)
-    public ServerResponse<User> updateUserInfomation(HttpSession session, User user){
+    public ServerResponse<User> updateUserInfomation(HttpSession session,
+                                                     User user){
         User currentUser = (User)session.getAttribute(Const.CURRENT_USER);
         if(currentUser == null){
             return ServerResponse.createByErrorMessage("用户未登录");

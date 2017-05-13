@@ -27,7 +27,8 @@ public class CategoryServiceImpl implements CategoryService {
     private CategoryMapper categoryMapper;
 
     @Override
-    public ServerResponse addCategory(String  categoryName, Integer parentId){
+    public ServerResponse addCategory(String  categoryName,
+                                      Integer parentId){
         if(parentId == 0 || StringUtils.isBlank(categoryName)){
             return ServerResponse.createByErrorMessage("添加品类参数错误");
         }
@@ -43,7 +44,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public ServerResponse updateCategoryName(Integer categoryId, String categoryName){
+    public ServerResponse updateCategoryName(Integer categoryId,
+                                             String categoryName){
         if(categoryId == null || StringUtils.isBlank(categoryName)){
             return ServerResponse.createByErrorMessage("更新品类参数错误");
         }
@@ -75,7 +77,7 @@ public class CategoryServiceImpl implements CategoryService {
      * @return
      */
     @Override
-    public ServerResponse selectCategoryAndDeepChildrenById(Integer categoryId){
+    public ServerResponse<List<Integer>> selectCategoryAndDeepChildrenById(Integer categoryId){
         Set<Category> categorySet = Sets.newHashSet();
         findChildCategory(categorySet,categoryId);
 

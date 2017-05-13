@@ -99,7 +99,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ServerResponse<String> checkAnswer(String username, String question, String answer){
+    public ServerResponse<String> checkAnswer(String username,
+                                              String question,
+                                              String answer){
         int resultCount = userMapper.checkAnswer(username,question,answer);
         if(resultCount > 0){
             //说明问题及问题答案是这个用户的，并且是正确的
@@ -111,7 +113,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ServerResponse<String> forgetResetPassword(String username, String newPassword, String forgetToken){
+    public ServerResponse<String> forgetResetPassword(String username,
+                                                      String newPassword,
+                                                      String forgetToken){
         if(StringUtils.isBlank(forgetToken)){
             return ServerResponse.createByErrorMessage("参数错误，Token需要传递");
         }

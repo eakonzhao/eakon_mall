@@ -12,13 +12,24 @@ public interface ProductService {
 
     public ServerResponse saveOrEditProduct(Product product);
 
-    public ServerResponse<String> setSaleStatus(Integer productId, Integer status);
+    public ServerResponse<String> setSaleStatus(Integer productId,
+                                                Integer status);
 
     public ServerResponse<ProductDetailVo> manageProductDetail(Integer productId);
 
-    public ServerResponse<PageInfo> getProductList(int pageNum, int pageSize);
+    public ServerResponse<PageInfo> getProductList(int pageNum,
+                                                   int pageSize);
 
-    public ServerResponse<PageInfo> searchProduct(String productName, Integer productId, int pageNum, int pageSize);
+    public ServerResponse<PageInfo> searchProduct(String productName,
+                                                  Integer productId,
+                                                  int pageNum,
+                                                  int pageSize);
 
     public ServerResponse<ProductDetailVo> getProductDetail(Integer productId);
+
+    public ServerResponse<PageInfo> getProductByKeywordCategory(String keyword,
+                                                                Integer categoryId,
+                                                                int pageNum,
+                                                                int pageSize,
+                                                                String orderBy);
 }

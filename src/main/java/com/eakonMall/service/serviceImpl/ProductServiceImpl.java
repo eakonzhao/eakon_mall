@@ -232,6 +232,15 @@ public class ProductServiceImpl implements ProductService {
             }
         }
 
-        List<Product> productList =
+        List<Product> productList = productMapper.selectByNameAndCategoryIds(StringUtils.isBlank(keyword)?null:keyword,
+                                                                             categoryIdList.size()==0?null:categoryIdList);
+        List<ProductListVo> productListVoList = Lists.newArrayList();
+        for(Product productItem: productList){
+            ProductListVo productListVo = assembleProductListVo(productItem);
+            productListVoList.add(productListVo);
+        }
+        PageInfo pageInfo = new PageInfo(productList);
+        pageInfo.setList(productListVoList);
+        return ServerResponse.createBySuccess(pageInfo);
     }
 }

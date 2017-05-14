@@ -10,9 +10,11 @@ import java.util.List;
  */
 public interface CategoryService {
 
-    public ServerResponse addCategory(String  categoryName, Integer parentId);
+    public ServerResponse addCategory(String  categoryName,
+                                      Integer parentId);
 
-    public ServerResponse updateCategoryName(Integer categoryId, String categoryName);
+    public ServerResponse updateCategoryName(Integer categoryId,
+                                             String categoryName);
 
     public ServerResponse<List<Category>> getChildrenCategoryParallelCategory(Integer categoryId);
 

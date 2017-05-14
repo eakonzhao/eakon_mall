@@ -8,19 +8,27 @@ import com.eakonMall.pojo.User;
  */
 public interface UserService {
 
-    public ServerResponse<User> login(String username, String password);
+    public ServerResponse<User> login(String username,
+                                      String password);
 
     public ServerResponse<String> register(User user);
 
-    public ServerResponse<String> checkValid(String str, String type);
+    public ServerResponse<String> checkValid(String str,
+                                             String type);
 
     public ServerResponse<String> selectQuestion(String username);
 
-    public ServerResponse<String> checkAnswer(String username, String question, String answer);
+    public ServerResponse<String> checkAnswer(String username,
+                                              String question,
+                                              String answer);
 
-    public ServerResponse<String> forgetResetPassword(String username, String newPassword, String passwordToken);
+    public ServerResponse<String> forgetResetPassword(String username,
+                                                      String newPassword,
+                                                      String passwordToken);
 
-    public ServerResponse<String> resetPassword(String oldPassword, String newPassword, User user);
+    public ServerResponse<String> resetPassword(String oldPassword,
+                                                String newPassword,
+                                                User user);
 
     public ServerResponse<User> updateUserInfomation(User user);
 

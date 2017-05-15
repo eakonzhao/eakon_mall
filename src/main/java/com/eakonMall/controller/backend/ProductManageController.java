@@ -156,7 +156,7 @@ public class ProductManageController {
     }
 
     @ResponseBody
-    @RequestMapping("richtext_img_upload.do")
+    @RequestMapping(value = "richtext_img_upload.do")
     public Map richtextImgUpload(HttpSession session,
                                             @RequestParam(value = "upload_file", required = false) MultipartFile file,
                                             HttpServletRequest request,
@@ -168,7 +168,7 @@ public class ProductManageController {
             resultMap.put("msg","请登录管理用账号");
             return resultMap;
         }
-        //simditor富文本中对于返回值有自己的要求,我们使用的是simditor所以按照simditor的要求进行返回
+        //simditor富文本中对于返回值有自己的要求,imditor规范中的返回格式
 /*        {
             "success": true/false,
                 "msg": "error message", # optional

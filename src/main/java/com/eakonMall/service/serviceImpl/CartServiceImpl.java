@@ -33,6 +33,7 @@ public class CartServiceImpl implements CartService {
     @Autowired
     private ProductMapper productMapper;
 
+    @Override
     public ServerResponse<CartVo> add(Integer userId,
                               Integer productId,
                               Integer count){
@@ -55,34 +56,53 @@ public class CartServiceImpl implements CartService {
             cart.setQuantity(count);
             cartMapper.updateByPrimaryKey(cart);
         }
-        CartVo cartVo = this.getCartVoLimit(userId);
-        return ServerResponse.createBySuccess(cartVo);
+        return this.list(userId);
     }
 
+    @Override
     public ServerResponse<CartVo> update(Integer userId,
                                          Integer productId,
                                          Integer count){
         if(productId == null || count == null ){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(),ResponseCode.ILLEGAL_ARGUMENT.getDesc());
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(),
+                                                           ResponseCode.ILLEGAL_ARGUMENT.getDesc());
         }
         Cart cart = cartMapper.selectCartByUserIdProductId(userId,productId);
         if(cart != null){
             cart.setQuantity(count);
         }
         cartMapper.updateByPrimaryKeySelective(cart);
-        CartVo cartVo = this.getCartVoLimit(userId);
-        return ServerResponse.createBySuccess(cartVo);
+        return this.list(userId);
     }
 
+    @Override
     public ServerResponse<CartVo> delete(Integer userId,
                                          String productIds){
         List<String> productList = Splitter.on(",").splitToList(productIds);//用了Guava的包
         if(CollectionUtils.isEmpty(productList)){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(),ResponseCode.ILLEGAL_ARGUMENT.getDesc());
         }
-        return null;
+        cartMapper.deleteByUserIdProductIds(userId,productList);
+        return this.list(userId);
     }
 
+    @Override
+    public ServerResponse<CartVo> list(Integer userId){
+        CartVo cartVo = this.getCartVoLimit(userId);
+        return ServerResponse.createBySuccess(cartVo);
+    }
+
+
+    @Override
+    public ServerResponse<CartVo> selectOrUnSelect(Integer userId,Integer productId,Integer checked){
+        cartMapper.checkOrUnCheckProduct(userId,null,checked);
+        return this.list(userId);
+    }
+
+    @Override
+    public ServerResponse<Integer> getCartProductCount(Integer userId){
+        return ServerResponse.createBySuccess(cartMapper.getCartProductCount(userId));
+    }
 
     private CartVo getCartVoLimit(Integer userId){
         CartVo cartVo = new CartVo();
@@ -145,6 +165,6 @@ public class CartServiceImpl implements CartService {
         if(userId == null){
             return false;
         }
-        return cartMapper.selectCartProductCheckedStatusByUserid(userId) ==0 ?true:false;
+        return cartMapper.selectCartProductCheckedStatusByUserId(userId) ==0 ?true:false;
     }
 }

@@ -53,3 +53,8 @@ dependency-reduced-pom.xml
 README.html
 #directory
 test/
+src/main/java/com/alipay/
+src/main/java/com/eakonMall/dto/
+src/main/java/com/eakonMall/model/
+src/main/resources/zfbinfo.properties
+src/main/webapp/WEB-INF/lib/

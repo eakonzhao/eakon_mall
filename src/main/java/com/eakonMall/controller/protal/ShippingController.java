@@ -24,7 +24,6 @@ public class ShippingController {
 
     @Autowired
     private ShippingService shippingService;
-
     @ResponseBody
     @RequestMapping("add.do")
     public ServerResponse add(HttpSession session,

@@ -205,5 +205,10 @@
   FROM mmall_order
     WHERE user_id = #{userId}
     AND order_no = #{orderNo}
+  </select><select id="selectByOrderNo" parameterType="long" resultMap="BaseResultMap">
+  SELECT
+  <include refid="Base_Column_List"/>
+    FROM mmall_order
+    WHERE order_no = #{orderNo}
   </select>
 </mapper>

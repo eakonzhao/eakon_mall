@@ -33,6 +33,30 @@ public class OrderController {
 
     private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
 
+
+    @ResponseBody
+    @RequestMapping("create.do")
+    public ServerResponse create(HttpSession session,
+                                 Integer shippingId){
+        User user = (User)session.getAttribute(Const.CURRENT_USER);
+        if(user == null){
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+        }
+        return orderService.create
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     @ResponseBody
     @RequestMapping("pay.do")
     public ServerResponse pay(HttpSession session,

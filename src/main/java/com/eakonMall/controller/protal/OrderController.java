@@ -42,21 +42,10 @@ public class OrderController {
         if(user == null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
         }
-        return orderService.create
+        return orderService.createOrder(user.getId(),shippingId);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
+    
     @ResponseBody
     @RequestMapping("pay.do")
     public ServerResponse pay(HttpSession session,

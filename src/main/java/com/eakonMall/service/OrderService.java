@@ -1,6 +1,7 @@
 package com.eakonMall.service;
 
 import com.eakonMall.common.ServerResponse;
+import com.eakonMall.vo.OrderVo;
 
 import java.util.Map;
 
@@ -17,4 +18,7 @@ public interface OrderService {
 
     public ServerResponse queryOrderPayStatus(Integer userId,
                                               Long orderNo);
+
+    public ServerResponse<OrderVo> createOrder(Integer userId,
+                                               Integer shippingId);
 }

@@ -68,11 +68,11 @@ public class OrderVo {
     }
 
     public String getPaymentTypeDesc() {
-        return paymengtTypeDesc;
+        return paymentTypeDesc;
     }
 
     public void setPaymentTypeDesc(String paymengtTypeDesc) {
-        this.paymengtTypeDesc = paymengtTypeDesc;
+        this.paymentTypeDesc = paymengtTypeDesc;
     }
 
     public Integer getPostage() {

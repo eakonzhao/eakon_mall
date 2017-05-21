@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +46,55 @@ public class OrderController {
         return orderService.createOrder(user.getId(),shippingId);
     }
 
-    
+
+    @ResponseBody
+    @RequestMapping("cancel.do")
+    public ServerResponse cancel(HttpSession session,
+                                 Long orderNo){
+        User user = (User)session.getAttribute(Const.CURRENT_USER);
+        if(user == null){
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+        }
+        return orderService.cancel(user.getId(),orderNo);
+    }
+
+
+    @ResponseBody
+    @RequestMapping("get_order_cart_product.do")
+    public ServerResponse getOrderCartProduct(HttpSession session){
+        User user = (User)session.getAttribute(Const.CURRENT_USER);
+        if(user == null){
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+        }
+        return orderService.getOrderCartProduct(user.getId());
+    }
+
+    @ResponseBody
+    @RequestMapping("detail.do")
+    public ServerResponse detail(HttpSession session,
+                                 Long orderNo){
+        User user = (User)session.getAttribute(Const.CURRENT_USER);
+        if(user == null){
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+        }
+        return orderService.getOrderDetail(user.getId(),orderNo);
+    }
+
+
+    @ResponseBody
+    @RequestMapping("list.do")
+    public ServerResponse list(HttpSession session,
+                               @RequestParam(value="pageNum",defaultValue = "1") int pageNum,
+                               @RequestParam(value = "pageSize",defaultValue = "10") int pageSize){
+        User user = (User)session.getAttribute(Const.CURRENT_USER);
+        if(user == null){
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+        }
+        return orderService.getOrderList(user.getId(),pageNum,pageSize);
+    }
+
+
+
     @ResponseBody
     @RequestMapping("pay.do")
     public ServerResponse pay(HttpSession session,

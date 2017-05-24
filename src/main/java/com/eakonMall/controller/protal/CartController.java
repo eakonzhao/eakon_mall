@@ -6,11 +6,11 @@ import com.eakonMall.common.ServerResponse;
 import com.eakonMall.pojo.User;
 import com.eakonMall.service.CartService;
 import com.eakonMall.vo.CartVo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
 public class CartController {
 
 
-    @Autowired
+    @Resource(name="cartService")
     private CartService cartService;
 
 

@@ -8,12 +8,12 @@ import com.eakonMall.service.OrderService;
 import com.eakonMall.service.UserService;
 import com.eakonMall.vo.OrderVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -23,15 +23,15 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/manage/order")
 public class OrderManageController {
 
-    @Autowired
+    @Resource(name="userService")
     private UserService userService;
 
 
-    @Autowired
+    @Resource(name="orderService")
     private OrderService orderService;
 
     @ResponseBody
-    @RequestMapping("list.do")
+    @RequestMapping(value="list.do")
     public ServerResponse<PageInfo> orderList(HttpSession session,
                                               @RequestParam(value="pageNum",defaultValue = "1") int pageNum,
                                               @RequestParam(value = "pageSize",defaultValue = "10") int pageSize){

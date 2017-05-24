@@ -4,11 +4,12 @@ import com.eakonMall.common.ServerResponse;
 import com.eakonMall.service.ProductService;
 import com.eakonMall.vo.ProductDetailVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
 
 /**
  * Created by Eakon on 2017/5/13.
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/product/")
 public class ProductController {
-    @Autowired
+    @Resource(name="productService")
     private ProductService productService;
 
     /**

@@ -11,13 +11,13 @@ import com.eakonMall.service.UserService;
 import com.eakonMall.util.PropertiesUtil;
 import com.google.common.collect.Maps;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -30,13 +30,13 @@ import java.util.Map;
 @RequestMapping("/manage/product")
 public class ProductManageController {
 
-    @Autowired
+    @Resource(name="userService")
     private UserService userService;
 
-    @Autowired
+    @Resource(name="productService")
     private ProductService productService;
 
-    @Autowired
+    @Resource(name="fileService")
     private FileService fileService;
 
     @ResponseBody

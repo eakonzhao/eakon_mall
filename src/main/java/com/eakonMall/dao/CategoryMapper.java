@@ -1,9 +1,10 @@
 package com.eakonMall.dao;
 
 import com.eakonMall.pojo.Category;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository(value = "categoryMapper")
 public interface CategoryMapper {
     int deleteByPrimaryKey(Integer id);
 

@@ -2,7 +2,9 @@ package com.eakonMall.dao;
 
 import com.eakonMall.pojo.User;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository(value = "userMapper")
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 

@@ -15,9 +15,9 @@ import com.eakonMall.vo.CartVo;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import org.apache.commons.collections.CollectionUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -27,10 +27,10 @@ import java.util.List;
 @Service("cartService")
 public class CartServiceImpl implements CartService {
 
-    @Autowired
+    @Resource(name="cartMapper")
     private CartMapper cartMapper;
 
-    @Autowired
+    @Resource(name="productMapper")
     private ProductMapper productMapper;
 
     @Override

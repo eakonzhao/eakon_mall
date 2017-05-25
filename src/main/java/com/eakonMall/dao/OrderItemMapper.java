@@ -2,9 +2,10 @@ package com.eakonMall.dao;
 
 import com.eakonMall.pojo.OrderItem;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository(value = "orderItemMapper")
 public interface OrderItemMapper {
     int deleteByPrimaryKey(Integer id);
 

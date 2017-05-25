@@ -7,9 +7,9 @@ import com.eakonMall.service.ShippingService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Maps;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +19,7 @@ import java.util.Map;
 @Service("shippingService")
 public class ShippingServiceImpl implements ShippingService {
 
-    @Autowired
+    @Resource(name="shippingMapper")
     private ShippingMapper shippingMapper;
 
     @Override

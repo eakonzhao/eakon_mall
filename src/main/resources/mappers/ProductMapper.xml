@@ -216,6 +216,8 @@
   <include refid="Base_Column_List" />
     ORDER BY id asc
   </select>
+
+
   <select id="selectByNameAndProductId" resultType="com.eakonMall.pojo.Product" parameterType="map">
     SELECT
     <include refid="Base_Column_List"/>
@@ -229,7 +231,7 @@
      </if>
    </where>
   </select>
-    <select id="selectByNameAndCategoryIds" resultType="BaseResultMap" parameterType="map">
+    <select id="selectByNameAndCategoryIds" resultMap="BaseResultMap" parameterType="map">
       SELECT
       <include refid="Base_Column_List"/>
       FROM mmall_product

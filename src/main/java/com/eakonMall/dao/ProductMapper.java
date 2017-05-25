@@ -2,9 +2,10 @@ package com.eakonMall.dao;
 
 import com.eakonMall.pojo.Product;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository(value = "productMapper")
 public interface ProductMapper {
     int deleteByPrimaryKey(Integer id);
 

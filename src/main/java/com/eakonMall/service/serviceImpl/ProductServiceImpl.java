@@ -17,9 +17,9 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,13 +29,13 @@ import java.util.List;
 @Service("productService")
 public class ProductServiceImpl implements ProductService {
 
-    @Autowired
+    @Resource(name="productMapper")
     private ProductMapper productMapper;
 
-    @Autowired
+    @Resource(name="categoryMapper")
     private CategoryMapper categoryMapper;
 
-    @Autowired
+    @Resource(name="categoryService")
     private CategoryService categoryService;
     @Override
     public ServerResponse saveOrEditProduct(Product product){

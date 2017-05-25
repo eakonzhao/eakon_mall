@@ -2,9 +2,10 @@ package com.eakonMall.dao;
 
 import com.eakonMall.pojo.Shipping;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository(value = "shippingMapper")
 public interface ShippingMapper {
     int deleteByPrimaryKey(Integer id);
 

@@ -8,9 +8,9 @@ import com.eakonMall.pojo.User;
 import com.eakonMall.service.UserService;
 import com.eakonMall.util.MD5Util;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.UUID;
 
 /**
@@ -19,7 +19,7 @@ import java.util.UUID;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
-    @Autowired
+    @Resource(name="userMapper")
     private UserMapper userMapper;
 
     @Override

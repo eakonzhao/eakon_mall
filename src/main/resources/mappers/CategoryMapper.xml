@@ -11,12 +11,44 @@
       <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
     </constructor>
+<!--    <constructor >
+     <idArg column="id"  javaType="java.lang.Integer" />
+     <arg column="parent_id"  javaType="java.lang.Integer" />
+     <arg column="name" javaType="java.lang.String" />
+     <arg column="status"  javaType="java.lang.Boolean" />
+     <arg column="sort_order"  javaType="java.lang.Integer" />
+     <arg column="create_time"  javaType="java.util.Date" />
+     <arg column="update_time" javaType="java.util.Date" />
+   </constructor>-->
+    <!--<association property="" javaType="com.eakonMall.pojo.Category">
+      <id property=""/>
+      <result column="parent_id"/>
+      <result/>
+      <result/>
+      <result/>
+      <result/>
+      <result/>
+    </association>-->
+   <!-- <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId"/>
+    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="status" jdbcType="BIT" property="status"/>
+    <result column="sort_order" jdbcType="INTEGER"  property="sortOrder"/>
+    <result column="create_time" jdbcType="TIMESTAMP"  property="createTime"/>
+    <result column="update_time" jdbcType="TIMESTAMP"  property="updateTime"/>-->
+    <!--<id column="id" property="id" />
+    <result column="parent_id"  property="parentId"/>
+    <result column="name"  property="name"/>
+    <result column="status" property="status"/>
+    <result column="sort_order"  property="sortOrder"/>
+    <result column="create_time"   property="createTime"/>
+    <result column="update_time"   property="updateTime"/>-->
   </resultMap>
   <sql id="Base_Column_List" >
     id, parent_id, name, status, sort_order, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from mmall_category
     where id = #{id,jdbcType=INTEGER}
@@ -26,10 +58,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.eakonMall.pojo.Category" >
-    insert into mmall_category (id, parent_id, name, 
-      status, sort_order, create_time, 
+    insert into mmall_category (id, parent_id, name,
+      status, sort_order, create_time,
       update_time)
-    values (#{id,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
       #{status,jdbcType=BIT}, #{sortOrder,jdbcType=INTEGER}, now(),
      now())
   </insert>

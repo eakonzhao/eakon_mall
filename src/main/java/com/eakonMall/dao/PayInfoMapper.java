@@ -1,7 +1,9 @@
 package com.eakonMall.dao;
 
 import com.eakonMall.pojo.PayInfo;
+import org.springframework.stereotype.Repository;
 
+@Repository(value = "payInfoMapper")
 public interface PayInfoMapper {
     int deleteByPrimaryKey(Integer id);
 

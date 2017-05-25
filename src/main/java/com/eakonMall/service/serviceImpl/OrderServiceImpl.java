@@ -34,6 +34,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -61,22 +62,22 @@ public class OrderServiceImpl implements OrderService {
     }
 
     private static final Logger logger = LoggerFactory.getLogger(OrderServiceImpl.class);
-    @Autowired
+    @Resource(name="orderMapper")
     private OrderMapper orderMapper;
 
-    @Autowired
+    @Resource(name="orderItemMapper")
     private OrderItemMapper orderItemMapper;
 
-    @Autowired
+    @Resource(name="payInfoMapper")
     private PayInfoMapper payInfoMapper;
 
-    @Autowired
+    @Resource(name="cartMapper")
     private CartMapper cartMapper;
 
-    @Autowired
+    @Resource(name="productMapper")
     private ProductMapper productMapper;
 
-    @Autowired
+    @Resource(name="shippingMapper")
     private ShippingMapper shippingMapper;
 
     @Override

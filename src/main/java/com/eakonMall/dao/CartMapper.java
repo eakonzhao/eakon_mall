@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-@Repository
+@Repository(value="cartMapper")
 public interface CartMapper {
     int deleteByPrimaryKey(Integer id);
 

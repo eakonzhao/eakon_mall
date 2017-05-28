@@ -23,7 +23,6 @@ target/
 
 .gradle/
 build/
-target/
 bin/
 dependency-reduced-pom.xml
 

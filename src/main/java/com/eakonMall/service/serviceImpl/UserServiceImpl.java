@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
                 }
             }
 
-            if(Const.EMAIL.equals(str)){
+            if(Const.EMAIL.equals(type)){
                 int resultCount = userMapper.checkEmail(str);
                 if(resultCount > 0 ){
                     return ServerResponse.createByErrorMessage("Email已经存在");

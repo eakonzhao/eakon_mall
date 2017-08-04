@@ -27,7 +27,7 @@
 
   <select id="checkUsername" resultType="java.lang.Integer" parameterType="String">
     select count(1) from mmall_user
-    where id = #{username}
+    where username = #{username}
   </select>
   <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
     SELECT 
@@ -36,7 +36,7 @@
     WHERE username=#{username} AND password=#{password}
   </select>
   <select id="checkEmail" resultType="java.lang.Integer">
-    SELECT COUNT (1)
+    SELECT count(1)
     FROM mmall_user
     WHERE email = #{email}
   </select>
